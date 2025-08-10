@@ -67,18 +67,13 @@ python LootBin.py \
 - **foundlinks.txt:** list of termbin links returning 200 OK
 - **scanner.log:** clean logs of useful events
 
-
-## 📝 Example keywords.txt
-```text
-password
-api_key
-secret
-token
-```
-
 ## ☕ Contributing
 Pull requests & suggestions welcome! Feel free to fork and add:
 
+- **Two-stage scan**: first match keyword list (cheap), then run regex/entropy checks on the matched line + a small context window (±3–6 lines). This will reduce noise drastically.
+- **Entropy filter**: compute Shannon entropy for candidate strings. Many real secrets are high-entropy; normal words are lower. TruffleHog-style tools combine regex + entropy.
+- **False-positive whitelist**: maintain an “exclude words” list for common false positives (e.g., example, localhost, test, example.com, sample API keys used in docs). Many tools allow exclude_regex or exclude_words.
+- regex support
 - Colored logs
 - JSON output
 - Live stats
