@@ -12,6 +12,29 @@ import argparse
 log_lock = threading.Lock()
 file_lock = threading.Lock()
 
+USER_AGENTS = [
+    # Windows Chrome
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    # Windows Firefox
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    # Mac Safari
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
+    # Linux Chrome
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    # Linux Firefox
+    "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    # Edge Windows
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0"
+]
+
+def get_random_headers():
+    return {
+        "User-Agent": random.choice(USER_AGENTS),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Connection": "keep-alive"
+    }
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Multi-threaded Termbin.com scanner')
     parser.add_argument('--threads', type=int, default=10, help='Number of worker threads (default: 10)')
@@ -46,9 +69,7 @@ def random_suffix():
 def scan_once(base_url, keywords, loot_dir, found_links_file, log_file, timeout):
     suffix = random_suffix()
     url = base_url + suffix
-    headers = {
-        "User-Agent": "LootBin/1.0 (+https://github.com/Ninja-Yubaraj/LootBin)"
-    }
+    headers = get_random_headers()
 
     try:
         response = requests.get(url, timeout=timeout, headers=headers)
