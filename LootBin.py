@@ -20,6 +20,7 @@ def parse_args():
     parser.add_argument('--loot', type=str, default='loot', help='Folder to save loot (default: loot)')
     parser.add_argument('--found', type=str, default='foundlinks.txt', help='File to save found links (default: foundlinks.txt)')
     parser.add_argument('--log', type=str, default='scanner.log', help='Log file (default: scanner.log)')
+    parser.add_argument('--timeout', type=float, default=10, help='Request timeout in seconds (default: 10)')
     return parser.parse_args()
 
 def load_keywords(path):
@@ -42,12 +43,15 @@ def random_suffix():
     length = random.choice([4, 5])
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
-def scan_once(base_url, keywords, loot_dir, found_links_file, log_file):
+def scan_once(base_url, keywords, loot_dir, found_links_file, log_file, timeout):
     suffix = random_suffix()
     url = base_url + suffix
+    headers = {
+        "User-Agent": "LootBin/1.0 (+https://github.com/Ninja-Yubaraj/LootBin)"
+    }
 
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=timeout, headers=headers)
     except Exception as e:
         log(f"[ERROR] Failed to connect to {url}: {e}", log_file)
         return
@@ -55,8 +59,10 @@ def scan_once(base_url, keywords, loot_dir, found_links_file, log_file):
     if response.status_code == 200:
         log(f"[FOUND] 200 OK: {url}", log_file)
         with file_lock:
-            with open(found_links_file, 'a', encoding='utf-8') as flf:
-                flf.write(url + '\n')
+            # Avoid duplicates in foundlinks.txt
+            if not os.path.exists(found_links_file) or url not in open(found_links_file).read():
+                with open(found_links_file, 'a', encoding='utf-8') as flf:
+                    flf.write(url + '\n')
 
         body = response.text
         lower_body = body.lower()
@@ -67,13 +73,12 @@ def scan_once(base_url, keywords, loot_dir, found_links_file, log_file):
                 loot_file = os.path.join(loot_dir, f"{suffix}.txt")
                 with file_lock:
                     with open(loot_file, 'w', encoding='utf-8') as lf:
-                        headers = '\n'.join(f"{k}: {v}" for k, v in response.headers.items())
-                        lf.write(f"URL: {url}\nStatus Code: {response.status_code}\n\nHeaders:\n{headers}\n\nBody:\n{body}")
+                        headers_text = '\n'.join(f"{k}: {v}" for k, v in response.headers.items())
+                        lf.write(f"URL: {url}\nStatus Code: {response.status_code}\n\nHeaders:\n{headers_text}\n\nBody:\n{body}")
                 break
-        # No keyword found: do nothing
-    else:
-        # Non-200 responses: do nothing
-        pass
+    elif response.status_code == 429:  # Rate limit
+        log(f"[RATE-LIMIT] 429 Too Many Requests. Backing off...", log_file)
+        time.sleep(2)
 
 def main():
     args = parse_args()
@@ -104,7 +109,7 @@ def main():
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
         try:
             while True:
-                executor.submit(scan_once, base_url, keywords, args.loot, args.found, args.log)
+                executor.submit(scan_once, base_url, keywords, args.loot, args.found, args.log, args.timeout)
                 time.sleep(args.delay)
         except KeyboardInterrupt:
             log("[STOP] Scanner stopped by user.", args.log)
